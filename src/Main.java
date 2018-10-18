@@ -7,24 +7,41 @@ public class Main {
 		StringManipulator manip1 = new StringManipulator();
 		System.out.print ("Welcome to String Manipulator! Type v for noVowels. Type r for reverse: " );
 		char response = in.next().charAt(0);
-		int contin = 0;
-		while (response != 1 && response != 2 && response != 3) {
+		char responseyn;
+		boolean response1;
+		String str;
+		while (response != 'v' && response != 'r') 
+		{
 			System.out.print("Try again: ");
-			response = in.nextInt();
+			response = in.next().charAt(0);
 		}
-		do {
-			if (response == 1) {
-				System.out.print("Enter the string you want to manipulate: ");
-				String str = in.next();
-				System.out.println("New String: " + manip1.noVowels(str));
-			} else if (response ==2) {
-				System.out.print("Enter the string you want to manipulate: ");
-				String str = in.next();
-				System.out.println("New String: " + manip1.reverse(str));
+		response1 = true;
+		while (response1)
+		{
+			System.out.print("Enter a string to change: ");
+			str = in.next();
+			if (response == 'v') 
+			{
+				System.out.println("String without vowels: "+ manip1.noVowels(str) );
+			} else 
+			{
+				System.out.println("String reversed: "+ manip1.reverse(str) );
 			}
-			System.out.print("Would you like to continue? 1 for yes, 2 for no: ");
-			contin = in.nextInt();
-		} while (contin == 1);
-		System.out.println("Goodbye");
-}
+			System.out.print("Do you want to play again? y for yes, n for no: ");	
+			responseyn = in.next().charAt(0);
+			while (responseyn != 'y' && responseyn != 'n') 
+			{
+				System.out.print("Try again: ");
+				responseyn = in.next().charAt(0);
+			}
+			if (responseyn == 'y')
+			{
+				response1 = true;
+				System.out.print("Type v for noVowels. Type r for reverse: ");
+				response = in.next().charAt(0);
+			} else {response1 = false;}
+		}
+		System.out.println("Goodbye!");
+	}
+	
 }
